@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Budget</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <span class="header-icon">💰</span>
+      <h1>Mon Budget</h1>
+    </div>
+  </header>
+
+  <main class="main-layout">
+
+    <!-- Colonne gauche : tableau de bord + formulaire -->
+    <div class="left-col">
+
+      <!-- Tableau de bord -->
+      <section id="dashboard">
+        <div class="summary-cards">
+          <div class="card card--solde">
+            <p class="card-label">Solde actuel</p>
+            <p class="card-value" id="val-solde">0,00 €</p>
+          </div>
+          <div class="card card--income">
+            <p class="card-label">Total revenus</p>
+            <p class="card-value" id="val-revenus">0,00 €</p>
+          </div>
+          <div class="card card--expense">
+            <p class="card-label">Total dépenses</p>
+            <p class="card-value" id="val-depenses">0,00 €</p>
+          </div>
+        </div>
+
+        <div class="card chart-card">
+          <h2 class="section-title">Dépenses par catégorie</h2>
+          <canvas id="chart" height="220"></canvas>
+        </div>
+      </section>
+
+      <!-- Formulaire d'ajout -->
+      <section id="form-section" class="card">
+        <h2 class="section-title">Ajouter une transaction</h2>
+        <form id="transaction-form" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-type">Type</label>
+              <select id="f-type" name="type" required>
+                <option value="depense">Dépense</option>
+                <option value="revenu">Revenu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="f-montant">Montant (€)</label>
+              <input id="f-montant" name="montant" type="number" min="0.01" step="0.01" placeholder="0,00" required />
+              <span class="field-error" id="err-montant"></span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-categorie">Catégorie</label>
+              <select id="f-categorie" name="categorie" required>
+                <option value="">— Choisir —</option>
+                <option value="alimentation">Alimentation</option>
+                <option value="logement">Logement</option>
+                <option value="transport">Transport</option>
+                <option value="loisirs">Loisirs</option>
+                <option value="sante">Santé</option>
+                <option value="autres">Autres</option>
+              </select>
+              <span class="field-error" id="err-categorie"></span>
+            </div>
+            <div class="form-group">
+              <label for="f-date">Date</label>
+              <input id="f-date" name="date" type="date" required />
+              <span class="field-error" id="err-date"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="f-description">Description</label>
+            <input id="f-description" name="description" type="text" placeholder="ex. Courses du week-end" maxlength="100" />
+          </div>
+
+          <button type="submit" class="btn btn--primary">+ Ajouter</button>
+        </form>
+      </section>
+
+    </div><!-- /left-col -->
+
+    <!-- Colonne droite : historique -->
+    <div class="right-col">
+      <section id="history-section" class="card">
+        <h2 class="section-title">Historique</h2>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label for="fil-type">Type</label>
+            <select id="fil-type">
+              <option value="">Tous</option>
+              <option value="depense">Dépenses</option>
+              <option value="revenu">Revenus</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fil-categorie">Catégorie</label>
+            <select id="fil-categorie">
+              <option value="">Toutes</option>
+              <option value="alimentation">Alimentation</option>
+              <option value="logement">Logement</option>
+              <option value="transport">Transport</option>
+              <option value="loisirs">Loisirs</option>
+              <option value="sante">Santé</option>
+              <option value="autres">Autres</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="fil-mois">Mois</label>
+            <input id="fil-mois" type="month" />
+          </div>
+          <button class="btn btn--ghost" id="btn-reset-filters">Réinitialiser</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table id="transactions-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th>Catégorie</th>
+                <th>Type</th>
+                <th class="col-amount">Montant</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="transactions-body">
+              <!-- Rempli par app.js -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div><!-- /right-col -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p>Données stockées localement dans votre navigateur — aucune donnée n'est envoyée sur internet.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
