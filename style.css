@@ -11,12 +11,12 @@
   --color-border:    #e2e8f0;
 
   /* Palette catégories */
-  --cat-alimentation: #f97316;
-  --cat-logement:     #6c63ff;
-  --cat-transport:    #2563eb;
-  --cat-loisirs:      #a855f7;
-  --cat-sante:        #22c55e;
-  --cat-autres:       #94a3b8;
+  --cat-alimentation: #f43f5e;
+  --cat-logement:     #f59e0b;
+  --cat-transport:    #0ea5e9;
+  --cat-loisirs:      #ec4899;
+  --cat-sante:        #10b981;
+  --cat-autres:       #64748b;
 
   --space-xs: 4px;
   --space-sm: 8px;
@@ -389,4 +389,5 @@ tbody td {
   .filters       { gap: var(--space-sm); }
   .filter-group  { min-width: 100%; }
   .header-inner  { padding: var(--space-md); }
+  .btn-delete    { padding: 8px 12px; min-width: 36px; min-height: 36px; }
 }
