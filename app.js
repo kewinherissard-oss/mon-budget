@@ -4,12 +4,12 @@
 const STORAGE_KEY = 'monbudget_transactions';
 
 const CAT_COLORS = {
-  alimentation: '#f97316',
-  logement:     '#6c63ff',
-  transport:    '#2563eb',
-  loisirs:      '#a855f7',
-  sante:        '#22c55e',
-  autres:       '#94a3b8',
+  alimentation: '#f43f5e',
+  logement:     '#f59e0b',
+  transport:    '#0ea5e9',
+  loisirs:      '#ec4899',
+  sante:        '#10b981',
+  autres:       '#64748b',
 };
 
 const CAT_LABELS = {
